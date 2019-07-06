@@ -11,5 +11,14 @@ namespace CORSV2.forms.user.order {
     
     
     public partial class check_order {
+        
+        /// <summary>
+        /// order_number_div 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl order_number_div;
     }
 }

@@ -12,6 +12,12 @@
     <link href="../../../themes/css/font-awesome.css?v=4.4.0" rel="stylesheet" />
     <link href="../../../themes/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" />
     <link href="../../../themes/css/style.css?v=4.1.0" rel="stylesheet" />
+    <style>
+        table,th {
+            vertical-align: middle;
+            text-align:center;
+        }
+    </style>
 </head>
 <body class="gray-bg">
     <div class="wrapper wrapper-content  animated fadeInRight">
@@ -20,36 +26,44 @@
                 <div class="ibox">
                     <div class="ibox-title">
                         <h5>CORS用户订单管理</h5>
-
+                        <div class="shop-os-item" style="padding-bottom: 2px; padding-top: 2px; float:right">
+                            <div class="shop-os-logo" data-reactid=".1.2.0.0">
+                                <a href="add_order.aspx">
+                                    <img src="../../../themes/icon/加号.png" alt="" height="20" width="20" /></a>
+                                <h4 class="shop-os-tit" style="display: inline;" data-reactid=".1.2.0.1.0">新增订单</h4>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="ibox-content">
                         <div class="newstable" style="margin-top: 1%">
 
                             <div class="bars pull-left">
-                                <div class="btn-group hidden-xs" id="toolbar" role="group">
-                                     <select id="dataType1" class="btn btn-outline btn-default" runat="server" onchange="changedata();">
+
+                                <div class="btn-group hidden-xs" id="toolbar" role="group" style="height:34px;">
+                                    <select id="dataType1" class="btn btn-outline btn-default" runat="server" onchange="changedata();" style="height:inherit;">
                                         <option value="全部" selected="selected">全部区域</option>
                                         <option value="全省">全省</option>
                                         <option value="杭州">杭州</option>
                                     </select>
-                                    <select id="dataType" class="btn btn-outline btn-default" onchange="changedata();">
+                                    <select id="dataType" class="btn btn-outline btn-default" onchange="changedata();" style="height:inherit;">
                                         <option value="0" selected="selected">全部用户</option>
                                         <option value="1">个人用户</option>
                                         <option value="2">企业用户</option>
                                     </select>
-                                    <button type="button" id="refreshcors" class="btn btn-outline btn-default" title="刷新单位列表">
+                                    <button type="button" id="refreshcors" class="btn btn-outline btn-default" title="刷新单位列表" style="height:inherit;">
                                         <i class="fa fa-refresh"></i>刷新
                                     </button>
                                     <button type="button" id="deletecors" class="btn btn-outline btn-default" data-toggle="tooltip" data-placement="top" title="删除">
                                         <i class="fa fa-trash-o"></i>删除
                                     </button>
-                                     <button type="button" id="download"  class="btn btn-outline btn-default" data-toggle="tooltip" data-placement="top" title="导出xls">
+                                    <button type="button" id="download" class="btn btn-outline btn-default" data-toggle="tooltip" data-placement="top" title="导出xls">
                                         <i class="fa fa-download" aria-hidden="true"></i>导出xls
                                     </button>
                                 </div>
                             </div>
 
-                            <table
+                            <table 
                                 id="table"
                                 data-toolbar="#toolbar"
                                 data-search="true"
@@ -97,33 +111,33 @@
                         field: 'state',
                         checkbox: true,
                     }, {
-                        field: 'bigDealId',
+                        field: 'OrderNumber',
                         title: '订单号',
                         sortable: true
 
                     }, {
-                        field: 'creatTime',
+                        field: 'reSubmitTime',
                         title: '提单时间',
                         sortable: true
                     },
                     {
-                        field: 'Username',
+                        field: 'UserName',
                         title: '提单人（账号ID）',
-                  
+
                     }, {
                         field: 'goodsNameShow',
                         title: '订单内容'
                     }, {
-                        field: 'goodsNum',
+                        field: 'AccountNum',
                         title: '账号个数',
                         sortable: true
                     }, {
-                        field: 'goodsTime',
+                        field: 'ServiceDuration',
                         title: '帐号时间'
                         , sortable: true
                     }
                     , {
-                        field: 'goodsAmount',
+                        field: 'Price',
                         title: '费用（元）'
                         , sortable: true
                     }
@@ -137,7 +151,7 @@
 
                     }],
             });
-            $(".search input").attr("placeholder", "用户名或单位名");
+            $(".search input").attr("placeholder", "用户名或订单号");
         }
         function changedata() {
             table.bootstrapTable('refresh', {
@@ -175,12 +189,11 @@
 
         $("#deletecors").click(function () {
             var ids = getIdSelections();
-
             if (ids.length == 0) {
                 parent.layer.msg('请先选择要删除的订单');
                 return false;
             }
-            layer.alert('您确定要删除这个CORS用户吗', {
+            layer.alert('您确定要删除这个订单吗', {
                 skin: 'layui-layer-lan' //样式类名
                 , btn: ['确定', '取消'], title: '删除'
             }, function () {

@@ -20,7 +20,7 @@ namespace Model
             DealTime = DateTime.Now;
             PayTime = DateTime.Now;
             Status = 0;
-            InvoiceInfo = "";
+            InvoiceInfoIndex = "";
             InvoiceType = 0;
             InvoiceFile = "";
             IssueType = 0;
@@ -28,7 +28,7 @@ namespace Model
         /// <summary>
         /// ID
         /// </summary>
-        public string ID { set; get; }
+        public int ID { set; get; }
         /// <summary>
         /// 用户名
         /// </summary>
@@ -64,7 +64,7 @@ namespace Model
         /// <summary>
         /// 发票抬头 索引，获取发票信息
         /// </summary>
-        public string InvoiceInfo { set; get; }
+        public string InvoiceInfoIndex { set; get; }
         /// <summary>
         /// 发票类型 0-普通发票 1-增值税发票
         /// </summary>

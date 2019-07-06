@@ -23,6 +23,41 @@ namespace CORSV2.forms.publicforms.login
                  Response.ContentType = "image/bmp";
                  newbmp.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Bmp);
              }
+             if (Request["action"] == "login")
+             {
+                 string VerifyCode = Request["VerifyCode"];
+                 string username = Request["UserName"];
+                 string password = Request["PassWord"];
+                 string code = Session["VerifyCode"].ToString();
+                 if (VerifyCode.ToLower() != code.ToLower())
+                 {
+                     Response.Write("-1");
+                     Response.End();
+                 }
+                 Model.RegisterUser registeruser=new Model.RegisterUser();
+                 if (DAL.RegisterUser.Exists(username))
+                 {
+                     registeruser = DAL.RegisterUser.GetModel(username);
+                 }
+                 else
+                 {
+                     Response.Write("-2");
+                     Response.End();
+                 }
+                 if (registeruser.PassWord == password)
+                 {
+                     Session["UserType"] = DAL.RegisterUser.GetModel(username).UserType;
+                     Session["UserName"] = username;
+                     Response.Write("1");
+                     Response.End();
+                 }
+                 else
+                 {
+                     Response.Write("0");
+                     Response.End();
+                 }
+             }
+
         }
     }
 }

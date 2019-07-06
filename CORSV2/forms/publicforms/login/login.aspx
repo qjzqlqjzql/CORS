@@ -31,7 +31,7 @@
                     </div>
                     <div class="m-b"></div>
                     <h4>欢迎使用 <strong>卫星导航定位基准服务平台</strong></h4>
-                    <ul class="m-b">
+  <%--                  <ul class="m-b">
                         <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i></li>
                         <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i></li>
                         <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i></li>
@@ -40,7 +40,7 @@
                         <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i></li>
                         <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i></li>
                         <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i></li>
-                    </ul>
+                    </ul>--%>
                     <strong>还没有账号？ <a href="../Register/Register.aspx" style="color: yellow;">立即申请注册&raquo;</a></strong>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                     <input type="text" class="form-control uname" id="UserName" placeholder="用户名" />
                     <input type="password" class="form-control pword m-b" id="PassWord" placeholder="密码" />
                     <a href="#">忘记密码？</a>
-                    <input name="code" maxlength="6" placeholder="请输入验证码" data-content="请输入验证码" class="format-input code" tabindex="3" />
+                    <input type="text" id="code" class="form-control name="code"  placeholder="请输入验证码"   />
                     <img id="verifyCode" src="?action=getcode" class="code" />
                     <a id="refreshCode" class="fr code">刷新</a>
                     <button class="btn btn-success btn-block" type="button" id="buttonlogin">登录</button>
@@ -90,6 +90,8 @@
     $("#buttonlogin").click(function () {
         var password = $("#PassWord").val();
         var username = $("#UserName").val();
+        var VerifyCode = $("#code").val();
+
         if (username.trim() == "") {
             layer.tips('请输入用户名', '#UserName', {
                 tips: [3, '#a94442']
@@ -105,18 +107,26 @@
                 $("#PassWord").focus();
                 return;
             }
+            else if (VerifyCode.trim() == "") {
+                layer.tips('请输入验证码', '#code', {
+                    tips: [3, '#a94442']
+                });
+                $("#code").focus();
+                return;
+            }
             else {
                 // verify password
                 $.ajax({
-                    url: "Login.aspx?action=login",
+                    url: "?action=login",
                     data: {
                         UserName: username,
-                        PassWord: hex_md5(password)
+                        PassWord: password,
+                        VerifyCode: VerifyCode
                     },
                     type: "POST",
                     success: function (result) {
                         if (result == "1") {
-                            window.location.href = "../../Index.aspx";
+                            window.location.href = "../../cors.aspx";
                         }
                         if (result == "0") //failed! username is not exist 
                         {
@@ -125,6 +135,22 @@
                                 //关闭后的操作
                             });
                             return false;
+                        }
+                        if (result == "-1") //failed! username is not exist 
+                        {
+
+                            layer.msg('验证码错误！', function () {
+                                //关闭后的操作
+                            });
+                            return;
+                        }
+                        if (result == "-2") //failed! username is not exist 
+                        {
+
+                            layer.msg('用户不存在！', function () {
+                                //关闭后的操作
+                            });
+                            return;
                         }
                     }
                 });

@@ -364,6 +364,12 @@
         //        return false;
         //    }
         //});
+        $("#pay_pay_btn").click(function(){
+            if ($(".certify-img").attr("src") != "") {
+                window.location.href = "end_order.aspx";
+                // 存在
+            }
+        });
     </script>
 
 </body>

@@ -801,7 +801,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: "/index.php?s=/Member/Account/companyNameRepeatCheck.html",
+                    url: "?action=company_judge",
                     data: { company_name: company_name },
                     success: function (data) {
                         if (data.code != 200) {
@@ -1056,10 +1056,10 @@
                 success: function (obj) { //提交成功的回调函数
                     var code = obj.code;
                     if (code == 200) {
-                        layer.msg(obj.msg, {
+                        layer.alert('资质认证完成，等待审核', {
                             time: 2000
                         }, function () {
-                            window.location.reload();
+                            window.location.href="../../cors.aspx";
                         });
                     } else {
                         layer.alert(obj.msg);
@@ -1078,14 +1078,14 @@
             });
         })
     </script>
-    <script>
+<%--    <script>
         $(function () {
             //ajax方法执行
             function runajax() {
                 $('#verifyCompanyForm').ajaxSubmit({
                     type: "post",  //提交方式
                     dataType: "json", //数据类型
-                    url: "/index.php?s=/Member/Account/qualificationAutoSaveAjax.html", //请求url
+                    url: "?action=verifyCompanyForm", //请求url
                     success: function (obj) { //提交成功的回调函数
                         var code = obj.code;
                         if (code == 200) {
@@ -1101,9 +1101,9 @@
             }
 
             //定时请求刷新,60秒自动保存
-            setInterval(runajax, 60000);
+            //setInterval(runajax, 60000);
         });
-    </script>
+    </script>--%>
     <script>
         $('img').zoomify();
         function showBig() {

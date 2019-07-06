@@ -112,6 +112,27 @@ namespace DAL
                 return null;
             }
         }
+
+        public static Model.PersonInfo GetModel()
+        {
+            string strSql = "select top 1 * from PersonInfo order by ID desc";
+            Model.PersonInfo model = new Model.PersonInfo();
+            DataSet ds = DBHelperSQL.GetDataSet(strSql, connectionString);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                model.ID = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
+                model.Contact = Convert.ToString(ds.Tables[0].Rows[0]["Contact"]);
+                model.ContactIDCardNumber = Convert.ToString(ds.Tables[0].Rows[0]["ContactIDCardNumber"]);
+                model.ContactIDCardFile = Convert.ToString(ds.Tables[0].Rows[0]["ContactIDCardFile"]);
+                model.CertificationTime = Convert.ToDateTime(ds.Tables[0].Rows[0]["CertificationTime"]);
+                model.BelongArea = Convert.ToString(ds.Tables[0].Rows[0]["BelongArea"]);
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+        }
         /// <summary>
         /// 删除一条数据（根据UserName）
         /// </summary>

@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="qualification_certify.aspx.cs" Inherits="CORSV2.forms.user.person.qualification_certify" %>
 <!DOCTYPE html>
+
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
@@ -64,66 +65,7 @@
                 <img src="/Public/Member/img/menu-toggler.png" alt="" />
             </a>
             <!-- END RESPONSIVE MENU TOGGLER -->
-            <!-- BEGIN TOP NAVIGATION MENU -->
-            <%--<ul class="nav navbar-nav pull-right">
 
-                <!-- BEGIN NOTIFICATION DROPDOWN -->
-                <li class="dropdown user">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <!--<img alt="" src="/Public/Member/img/avatar1_small.jpg"/>-->
-                        <span class="username">qjzql</span>
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/index.php?s=/Member/Account/baseInfo.html"><i class="fa fa-lock"></i>用户信息</a></li>
-                        <!--<li><a href="/index.php?s=/Member/Account/certify.html"><i class="fa fa-user"></i> 实名认证</a></li>-->
-                        <li><a href="/index.php?s=/Home/Member/logOut.html"><i class="fa fa-key"></i>注销登陆</a></li>
-                    </ul>
-                </li>
-
-
-                <li class="dropdown" id="header_notification_bar">
-
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-
-                        <!--<i class="fa fa-bell"></i>-->
-                        <span class="username">消息中心&nbsp;&nbsp;&nbsp;&nbsp;</span>
-
-                    </a>
-
-                    <ul class="dropdown-menu extended notification">
-                        <li>
-
-                            <p>站内消息通知</p>
-
-                        </li>
-
-
-
-                        <li class="external">
-                            <a href="/index.php?s=/Member/Notice/noticeList.html">查看所有消息 <i class="m-icon-swapright"></i></a>
-                        </li>
-
-                    </ul>
-
-                </li>
-
-                <li class="dropdown">       
-                    <ul class="dropdown-menu" style="min-width: 50px;">
-                        <li>
-                            <img src="/Public/Home/images/weixin_code.jpg"></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a target="_blank" href="/index.php?s=/Home/About/contactUs.html" style="padding-left: 20px; padding-right: 20px; padding: 10px 15px 7px 15px; line-height: 25px;">
-                        <span style="color: #999;">联系我们</span>
-                    </a>
-                </li>
-
-                <!-- END USER LOGIN DROPDOWN -->
-            </ul>--%>
-            <!-- END TOP NAVIGATION MENU -->
         </div>
         <!-- END TOP NAVIGATION BAR -->
     </div>
@@ -218,12 +160,21 @@
 
                             <ul class="centerFormUl" style="padding-top: 0;">
                                 <li class="vertifyLiTitle titleBottom">基本信息填写</li>
+                                <li class="clearfix">
+                                    <label class="labelLeft"><span class="required">*</span>机构名称：</label>
+                                    <div class="labelRight">
+                                        <input type="text" name="company_name" value="" id="company_name" class="form-control width-300 " placeholder="请确保跟公章信息一致">
+                                        <i class="errorTips errorCompany" hidden="true" style="display: none;">
+                                            <span class="fa fa-warning"></span><em></em>
+                                        </i>
+                                    </div>
 
+                                </li>
 
 
 
                                 <li class="clearfix">
-                                    <label class="labelLeft"><span class="required">*</span>姓名：</label>
+                                    <label class="labelLeft"><span class="required">*</span>法定代表人姓名：</label>
                                     <div class="labelRight">
                                         <input type="text" name="corporate" value="" class="form-control width-300">
                                         <i class="errorTips errorZuzhi" hidden="true" style="display: none;">
@@ -233,7 +184,7 @@
                                 </li>
 
                                 <li class="clearfix">
-                                    <label class="labelLeft"><span class="required">*</span>电话：</label>
+                                    <label class="labelLeft"><span class="required">*</span>法定代表人电话：</label>
                                     <div class="labelRight">
                                         <input type="text" name="corporate_tel" value="" class="form-control width-300" placeholder="填写示例：0731-88888888">
                                         <i class="errorTips errorZuzhi" hidden="true" style="display: none;">
@@ -243,7 +194,7 @@
                                 </li>
 
                                 <li class="clearfix">
-                                    <label class="labelLeft"><span class="required">*</span>地址：</label>
+                                    <label class="labelLeft"><span class="required">*</span>机构地址：</label>
                                     <div class="labelRight">
                                         <select id="province" name="province" class="select2-select " style="min-width: 97px;">
                                             <option value="">省份</option>
@@ -321,20 +272,17 @@
 
                                 <li class="vertifyLiTitle" style="margin: 10px 0;">资料上传</li>
 
-      
 
-             
+                     
 
-
-                               
-
-                                <li class="clearfix operator_id_card" style="height: auto;">
-                                    <label class="labelLeft"><span class="required">*</span>经办人身份证：</label>
+                                <li class="clearfix" style="height: auto;">
+                                    <label class="labelLeft"><span class="required">*</span>法定代表人身份证：</label>
                                     <div class="labelRight">
-                                        <div id="operator_id_card_front_file" class="uploader-list">
+                                        <!--用来存放item-->
+                                        <div id="corporate_id_card_front_file" class="uploader-list">
                                             <img class="certify-img" src="">
                                         </div>
-                                        <div class="filePicker" id="operator_id_card_front">选择图片(正面)</div>
+                                        <div class="filePicker" id="corporate_id_card_front">选择图片(正面)</div>
 
                                         <i class="errorTips errorZuzhi" hidden="true" style="display: none;">
                                             <span class="fa fa-warning"></span><em></em>
@@ -342,11 +290,11 @@
 
                                         <i class="tipsFile">图片大小不要超过5M，支持PNG，JPG格式</i>
 
-                                        <div id="operator_id_card_reverse_file" class="uploader-list">
+
+                                        <div id="corporate_id_card_reverse_file" class="uploader-list">
                                             <img class="certify-img" src="">
                                         </div>
-                                        <div class="filePicker" id="operator_id_card_reverse">选择图片(反面)</div>
-
+                                        <div class="filePicker" id="corporate_id_card_reverse">选择图片(反面)</div>
 
                                         <i class="errorTips errorZuzhi" hidden="true" style="display: none;">
                                             <span class="fa fa-warning"></span><em></em>
@@ -355,6 +303,8 @@
                                         <i class="tipsFile">图片大小不要超过5M，支持PNG，JPG格式</i>
                                     </div>
                                 </li>
+
+           
 
                                 <li class="clearfix" style="height: auto;">
                                     <label class="labelLeft"><span class="required">*</span>服务保密协议扫描件（盖章）：</label>
@@ -376,11 +326,28 @@
                                 </li>
 
 
-             
+                        
 
 
-                                <li class="vertifyLiTitle titleBottom">其他信息</li>
-
+                                <li class="vertifyLiTitle titleBottom">联系人信息</li>
+                                <li class="clearfix">
+                                    <label class="labelLeft"><span class="required">*</span>联系人姓名：</label>
+                                    <div class="labelRight">
+                                        <input type="text" name="contact_name" class="form-control width-300" value="">
+                                        <i class="errorTips errorName" hidden="true" style="display: none;">
+                                            <span class="fa fa-warning"></span><em></em>
+                                        </i>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <label class="labelLeft"><span class="required">*</span>联系人电话：</label>
+                                    <div class="labelRight">
+                                        <input type="tel" name="contact_phone" class="form-control width-300" value="" placeholder="请填写手机号码">
+                                        <i class="errorTips errorTel" hidden="true" style="display: none;">
+                                            <span class="fa fa-warning"></span><em></em>
+                                        </i>
+                                    </div>
+                                </li>
                                 <li class="clearfix">
                                     <label class="labelLeft"><span class="required">*</span>联系人电子邮箱：</label>
                                     <div class="labelRight">
@@ -602,34 +569,8 @@
     <script>
         //认证机构名称重复判断
         $(document).ready(function () {
-            $("#company_name").change(function () {
-                company_name = $("#company_name").val();
-                if (!company_name) {
-                    $("#company_name").focus();
-                    $('.errorTips').hide();
-                    $(":input[name='company_name']").siblings('i').show().find('em').html('请填写机构名称');
-                    return false;
-                }
 
                 //检查名称是否重复
-
-                $.ajax({
-                    type: 'POST',
-                    url: "/index.php?s=/Member/Account/companyNameRepeatCheck.html",
-                    data: { company_name: company_name },
-                    success: function (data) {
-                        if (data.code != 200) {
-                            $("#company_name").focus();
-                            $('.errorTips').hide();
-                            $(":input[name='company_name']").siblings('i').show().find('em').html('该机构已注册，请联系管理员！');
-                            return false;
-                        }
-                    },
-                    dataType: "json"
-                });
-
-
-            });
         });
     </script>
     <!-- END CONTAINER -->
@@ -670,47 +611,6 @@
         // 资质认证的提交表单按钮
         $(".centerBtnCompany").click(function () {
             $('.errorTips').hide(); // 隐藏所有的错误提示信息
-            //*机构名称：
-            company_name = $(":input[name='company_name']").val();
-
-            if (company_name.length < 2) {
-                $(":input[name='company_name']").focus();
-                $('.errorTips').hide();
-                $(":input[name='company_name']").siblings('i').show().find('em').html('机构名称填写错误');
-                return false;
-            }
-
-            //机构类型
-            company_type_id = $(":input[name='company_type_id']:checked").val();
-            //测绘资质企业, 需要多校验几个内容
-            if (company_type_id == 1) {
-                //*测绘资质等级：
-                map_level = $('#map_level').val();
-                if (map_level == '') {
-                    $(":input[name='map_level']").focus();
-                    $('.errorTips').hide();
-                    $(":input[name='map_level']").siblings('i').show().find('em').html('请选择测绘资质等级');
-                    return false;
-                }
-
-                //*测绘资质证书编号：
-                map_qualification_sn = $('.verifyCompanyForm').find(":input[name='map_qualification_sn']").val();
-                if ($.trim(map_qualification_sn) == '') {
-                    $(":input[name='map_qualification_sn']").focus();
-                    $('.errorTips').hide();
-                    $(":input[name='map_qualification_sn']").siblings('i').show().find('em').html('请填写测绘资质证书编号');
-                    return false;
-                }
-            }
-
-            //*组织机构编号：
-            business_licence = $('.verifyCompanyForm').find(":input[name='business_licence']").val();
-            if ($.trim(business_licence) == '') {
-                $(":input[name='business_licence']").focus();
-                $('.errorTips').hide();
-                $(":input[name='business_licence']").siblings('i').show().find('em').html('请填写组织机构编号');
-                return false;
-            }
 
 
             certify_type = $(":input[name='certify_type']:checked").val();
@@ -721,7 +621,7 @@
             if ($.trim(corporate) == '') {
                 $(":input[name='corporate']").focus();
                 $('.errorTips').hide();
-                $(":input[name='corporate']").siblings('i').show().find('em').html('请填写法定代表人姓名');
+                $(":input[name='corporate']").siblings('i').show().find('em').html('请填写姓名');
                 return false;
             }
 
@@ -733,13 +633,13 @@
             if ($.trim(corporate_tel) == '') {
                 $(":input[name='corporate_tel']").focus();
                 $('.errorTips').hide();
-                $(":input[name='corporate_tel']").siblings('i').show().find('em').html('请填写法定代表人电话');
+                $(":input[name='corporate_tel']").siblings('i').show().find('em').html('请填写联系电话');
                 return false;
             }
             else if (!isMob.test(corporate_tel) && !isPhone.test(corporate_tel)) {
                 $(":input[name='corporate_tel']").focus();
                 $('.errorTips').hide();
-                $(":input[name='corporate_tel']").siblings('i').show().find('em').html('法定代表人联系电话格式错误');
+                $(":input[name='corporate_tel']").siblings('i').show().find('em').html('联系电话格式错误');
                 return false;
             }
 
@@ -763,13 +663,6 @@
 
             contact_wechat = $('.verifyCompanyForm').find(":input[name='contact_wechat']").val();
 
-
-            if (company_name.length < 2) {
-                $(":input[name='company_name']").focus();
-                $('.errorTips').hide();
-                $(":input[name='company_name']").siblings('i').show().find('em').html('错误的公司名称');
-                return false;
-            }
             if (province == '') {
                 $(":input[name='province']").focus();
                 $('.errorTips').hide();
@@ -794,12 +687,7 @@
                 $(":input[name='address']").siblings('i').show().find('em').html('请输入详细地址');
                 return false;
             }
-            if (business_licence.length < 6) {
-                $(":input[name='business_licence']").focus();
-                $('.errorTips').hide();
-                $(":input[name='business_licence']").siblings('i').show().find('em').html('组织机构编号不符合规范');
-                return false;
-            }
+
             if (!post_code) {
                 $(":input[name='post_code']").focus();
                 $('.errorTips').hide();
@@ -870,10 +758,10 @@
                 success: function (obj) { //提交成功的回调函数
                     var code = obj.code;
                     if (code == 200) {
-                        layer.msg(obj.msg, {
+                        layer.alert('资质认证完成，等待审核', {
                             time: 2000
                         }, function () {
-                            window.location.reload();
+                            window.location.href = "../../cors.aspx";
                         });
                     } else {
                         layer.alert(obj.msg);
@@ -892,14 +780,14 @@
             });
         })
     </script>
-    <script>
+<%--    <script>
         $(function () {
             //ajax方法执行
             function runajax() {
                 $('#verifyCompanyForm').ajaxSubmit({
                     type: "post",  //提交方式
                     dataType: "json", //数据类型
-                    url: "/index.php?s=/Member/Account/qualificationAutoSaveAjax.html", //请求url
+                    url: "?action=verifyCompanyForm", //请求url
                     success: function (obj) { //提交成功的回调函数
                         var code = obj.code;
                         if (code == 200) {
@@ -915,9 +803,9 @@
             }
 
             //定时请求刷新,60秒自动保存
-            setInterval(runajax, 60000);
+            //setInterval(runajax, 60000);
         });
-    </script>
+    </script>--%>
     <script>
         $('img').zoomify();
         function showBig() {

@@ -92,6 +92,8 @@
     <Content Include="forms\administrator\information\StationNetManage.aspx" />
     <Content Include="forms\administrator\information\StationNetSet.aspx" />
     <Content Include="forms\administrator\information\ViewPic.aspx" />
+    <Content Include="forms\administrator\order\check_order.aspx" />
+    <Content Include="forms\administrator\order\manage_order.aspx" />
     <Content Include="forms\administrator\system\AddNews.aspx" />
     <Content Include="forms\administrator\system\AddPoint.aspx" />
     <Content Include="forms\administrator\system\Basestation.aspx" />
@@ -117,7 +119,16 @@
     <Content Include="forms\publicforms\login\changepassword.aspx" />
     <Content Include="forms\publicforms\login\login.aspx" />
     <Content Include="forms\publicforms\map\QueryTDT.aspx" />
+    <Content Include="forms\publicforms\register\js\bootstrap.min.js" />
+    <Content Include="forms\publicforms\register\js\content.js" />
+    <Content Include="forms\publicforms\register\js\form-validate-demo.js" />
+    <Content Include="forms\publicforms\register\js\jquery-validate.js" />
+    <Content Include="forms\publicforms\register\js\jquery.min.js" />
+    <Content Include="forms\publicforms\register\js\jquery.validate.min.js" />
+    <Content Include="forms\publicforms\register\js\messages_zh.min.js" />
+    <Content Include="forms\publicforms\register\js\stats.js" />
     <Content Include="forms\publicforms\register\register.aspx" />
+    <Content Include="forms\publicforms\register\WebForm1.aspx" />
     <Content Include="forms\user\company\css\bootstrap.min.css" />
     <Content Include="forms\user\company\css\custom.css" />
     <Content Include="forms\user\company\css\DT_bootstrap.css" />
@@ -176,6 +187,7 @@
     <Content Include="js\geo.js" />
     <Content Include="js\jquery-1.10.2.min.js" />
     <Content Include="js\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="js\jquery.common.js" />
     <Content Include="js\jquery.cookie.min.js" />
     <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\jquery.slimscroll.min.js" />
@@ -195,6 +207,7 @@
     <Content Include="js\select2.min.js" />
     <Content Include="js\select2_pinyin.js" />
     <Content Include="js\twitter-bootstrap-hover-dropdown.min.js" />
+    <Content Include="js\util.js" />
     <Content Include="obj\Debug\CORSV2.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\CORSV2.dll" />
     <Content Include="obj\Debug\CORSV2.pdb" />
@@ -251,6 +264,20 @@
     <Content Include="js\plugins\suggest\data.json" />
     <Content Include="js\plugins\webuploader\.DS_Store" />
     <Content Include="js\plugins\webuploader\README.md" />
+    <Content Include="themes\icon\加号.png" />
+    <Content Include="themes\icon\图件转换.png" />
+    <Content Include="themes\icon\坐标转换.png" />
+    <Content Include="themes\icon\质量检查.png" />
+    <Content Include="themes\icon\高程转换.png" />
+    <Content Include="themes\images\ajax-modal-loading.gif" />
+    <Content Include="themes\images\login-background1.jpg" />
+    <Content Include="themes\images\login-background111.jpg" />
+    <Content Include="themes\images\login-background3.jpg" />
+    <Content Include="themes\images\menu-toggler.png" />
+    <Content Include="themes\images\select2 %281%29.png" />
+    <Content Include="themes\images\select2.png" />
+    <Content Include="themes\images\sprite.png" />
+    <Content Include="themes\images\syncfusion-icons.png" />
     <Content Include="upload\EquipConfig\超级宽带.pdf" />
     <Content Include="upload\LightningReport\北京站.pdf" />
     <Content Include="upload\RouterConfig\超级宽带.zip" />
@@ -258,6 +285,9 @@
     <Content Include="obj\Debug\build.force" />
     <Content Include="obj\Debug\CORSV2.csprojResolveAssemblyReference.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="themes\images\favicon.ico_Zone.Identifier_%24DATA" />
+    <Content Include="themes\images\login-background.jpg_Zone.Identifier_%24DATA" />
+    <Content Include="themes\images\profile_small.png_Zone.Identifier_%24DATA" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1054,6 +1084,20 @@
     <Compile Include="forms\administrator\information\ViewPic.aspx.designer.cs">
       <DependentUpon>ViewPic.aspx</DependentUpon>
     </Compile>
+    <Compile Include="forms\administrator\order\check_order.aspx.cs">
+      <DependentUpon>check_order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forms\administrator\order\check_order.aspx.designer.cs">
+      <DependentUpon>check_order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="forms\administrator\order\manage_order.aspx.cs">
+      <DependentUpon>manage_order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forms\administrator\order\manage_order.aspx.designer.cs">
+      <DependentUpon>manage_order.aspx</DependentUpon>
+    </Compile>
     <Compile Include="forms\administrator\system\AddNews.aspx.cs">
       <DependentUpon>AddNews.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1239,6 +1283,13 @@
     <Compile Include="forms\publicforms\register\register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="forms\publicforms\register\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forms\publicforms\register\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="forms\user\company\qualification_certify.aspx.cs">
       <DependentUpon>qualification_certify.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1325,8 +1376,10 @@
     <Folder Include="forms\administrator\business\" />
     <Folder Include="forms\administrator\log\" />
     <Folder Include="forms\administrator\users\" />
+    <Folder Include="forms\publicforms\register\css\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="upload\PointRemark\" />
+    <Folder Include="upload\Qualification\" />
     <Folder Include="upload\WorkingArea\" />
     <Folder Include="upload\WorkPermit\" />
   </ItemGroup>

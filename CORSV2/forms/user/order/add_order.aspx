@@ -85,17 +85,17 @@
                                             <div id="liteDeviceList">
                                                 <ul class="shop-checkblock" data-reactid=".2">
                                                     <li>
-                                                        <label id="m_service_label" class="shop-checkblock-item" style="border-color: #d8d2d2;">
+                                                        <label id="m_service_label" class="shop-checkblock-item" data-value="dm" style="border-color: rgb(0, 121, 219);">
                                                             <h3 class="shop-checkblock-item-title">提供亚米级服务</h3>
                                                             <p class="shop-checkblock-item-desc">适用于估计坐标</p>
                                                             <input id="m_service" type="radio" name="demo-product" value="" checked="" class="shop-checkblock-item-radio" /></label></li>
                                                     <li>
-                                                        <label id="cm_service_label" class="shop-checkblock-item" style="border-color: #d8d2d2;">
+                                                        <label id="cm_service_label" class="shop-checkblock-item" data-value="cm" style="border-color: #d8d2d2;">
                                                             <h3 class="shop-checkblock-item-title">提供厘米级服务</h3>
                                                             <p class="shop-checkblock-item-desc">适用于平时作业</p>
                                                             <input id="cm_service" type="radio" name="demo-product" value="" class="shop-checkblock-item-radio" /></label></li>
                                                     <li>
-                                                        <label id="mm_service-label" class="shop-checkblock-item">
+                                                        <label id="mm_service-label" class="shop-checkblock-item" data-value="mm">
                                                             <h3 class="shop-checkblock-item-title">提供毫米级服务</h3>
                                                             <p class="shop-checkblock-item-desc">适用于精密定位</p>
                                                             <input id="mm_service" type="radio" name="demo-product" value="" class="shop-checkblock-item-radio" /></label></li>
@@ -115,8 +115,8 @@
                                         </label>
                                         <div class="shop-list-con" id="liteSystemImageList">
                                             <ul class="shop-os-list shop-os-list-4" data-reactid=".1">
-                                                <li class="shop-os-item-box" data-value="0" data-name="坐标转换" data-reactid=".1.0">
-                                                    <div class="shop-os-item" id="coor_tran">
+                                                <li class="shop-os-item-box"  data-name="坐标转换" data-reactid=".1.0">
+                                                    <div class="shop-os-item" data-value="CoorTransEnable" id="coor_tran" style="border-color:rgb(219, 219, 219);">
                                                         <div class="shop-os-logo" data-reactid=".1.2.0.0">
                                                             <img src="../../../themes/icon/坐标转换.png" alt="" data-reactid=".1.0.0.0.0">
                                                         </div>
@@ -126,7 +126,7 @@
                                                     </div>
                                                 </li>
                                                 <li class="shop-os-item-box" data-value="1" data-name="高程转换 " data-reactid=".1.1">
-                                                    <div class="shop-os-item" id="height_tran">
+                                                    <div class="shop-os-item" data-value="HeightTransEnable" id="height_tran" style="border-color:rgb(219, 219, 219);">
                                                         <div class="shop-os-logo" data-reactid=".1.1.0.0">
                                                             <img src="../../../themes/icon/高程转换.png" alt="" data-reactid=".1.1.0.0.0">
                                                         </div>
@@ -135,18 +135,18 @@
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class="shop-os-item-box" data-value="2" data-name="图件转换" data-reactid=".1.2">
-                                                    <div class="shop-os-item" id="picture_tran">
+                                                <li class="shop-os-item-box" data-value="2" data-name="SHP文件转换" data-reactid=".1.2">
+                                                    <div class="shop-os-item" data-value="SHPTransEnable" id="picture_tran" style="border-color:rgb(219, 219, 219);">
                                                         <div class="shop-os-logo" data-reactid=".1.2.0.0">
                                                             <img src="../../../themes/icon/图件转换.png" alt="" data-reactid=".1.2.0.0.0">
                                                         </div>
                                                         <div class="shop-os-con" data-reactid=".1.2.0.1">
-                                                            <h3 class="shop-os-tit" data-reactid=".1.2.0.1.0">图件转换</h3>
+                                                            <h3 class="shop-os-tit" data-reactid=".1.2.0.1.0">SHP文件转换</h3>
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class="shop-os-item-box" data-value="3" data-name="观测文件质量检查" data-reactid=".1.3">
-                                                    <div class="shop-os-item" data-reactid=".1.3.0">
+                                                <li class="shop-os-item-box" data-value="3" data-name="观测文件质量检查" data-reactid=".1.3" >
+                                                    <div class="shop-os-item" data-value="ObsQualityEnable"  data-reactid=".1.3.0" style="border-color:rgb(219, 219, 219);">
                                                         <div class="shop-os-logo" data-reactid=".1.3.0.0">
                                                             <img src="../../../themes/icon/质量检查.png" alt="" data-reactid=".1.3.0.0.0">
                                                         </div>
@@ -234,37 +234,42 @@
         </div>
     </form>
     <script>
+        //传到后台的订单时间
+        var time = 1;
+        var servertype = "dm";
+        var otherserver = new Array();
         $(".shop-checkblock-item").click(function () {
-            if ($(this).css("border-color") == "rgb(216, 210, 210)") {
-                $(this).css({ "border-color": "rgb(0, 121, 219)" });
-            }
-            else {
-                $(this).css({ "border-color": "rgb(216, 210, 210)" });
-            }
-        })
+            $(".shop-checkblock-item").css({ "border-color": "rgb(216, 210, 210)" });
+            $(this).css({ "border-color": "rgb(0, 121, 219)" });
+            servertype = $(this).attr("data-value");
+        });
         $(".shop-os-item").click(function () {
             if ($(this).css("border-color") == "rgb(219, 219, 219)") {
                 $(this).css({ "border-color": "rgb(0, 121, 219)" });
+
             }
             else {
                 $(this).css({ "border-color": "rgb(219, 219, 219)" });
             }
         })
         $(".b-item").click(function () {
+            time = $(this).attr("data-value");
             $(".b-item").css({ "backgroundColor": "rgb(255, 255 ,255)" });
             $(this).css({ "backgroundColor": "rgb(215, 230, 248)" });
         })
     </script>
     <script>
+        //申请账号个数
+        var apply_num;
         $('#apply_add').click(function () {
             if ($('#apply_num').val() != "10") {
-                var apply_num = Number($('#apply_num').val()) + 1;
+                apply_num = Number($('#apply_num').val()) + 1;
                 $('#apply_num').val(apply_num);
             }
         })
         $('#apply_sub').click(function () {
             if ($('#apply_num').val() != "1") {
-                var apply_num = Number($('#apply_num').val()) - 1;
+                apply_num = Number($('#apply_num').val()) - 1;
                 $('#apply_num').val(apply_num);
             }
         })
@@ -272,20 +277,32 @@
     </script>
     <script>
         $('#liteBuySubmit').click(function () {
-            var yy = "fgh";
+           
+            $('.shop-os-item').each(function (key, value) {
+                if ($(this).css("border-color")== "rgb(0, 121, 219)")
+                {
+                    otherserver.push($(this).attr("data-value"));      //如果是其他标签 用 html();
+                }
+            });
             $('#order_form').ajaxSubmit({
                 type: 'POST',
                 url: "?action=order",
                 data: {
-                    hhh:"dd"
+                    time: time,
+                    servertype: servertype,
+                    applynum:apply_num,
+                    otherserver: otherserver.join(',')//转换成字符串
                 },
+                traditional: true,//防止深度序列化
                 success: function (data) {
-                    if (data.code != 200) {
-                        
+                    if (data.code == 200) {                        
                         return false;
                     }
+                    if(data.length>5)
+                    {
+                        window.location.href = "check_order.aspx?order_number="+data;
+                    }
                 },
-                dataType: "json"
             });
         });
     </script>

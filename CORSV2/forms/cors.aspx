@@ -2,15 +2,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="renderer" content="webkit">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="renderer" content="webkit" />
     <title>卫星导航定位基准站网服务管理系统</title>
-    <link rel="shortcut icon" href="../themes/images/favicon.ico">
-    <link href="../themes/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="../themes/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-    <link href="../themes/css/animate.css" rel="stylesheet">
-    <link href="../themes/css/style.css?v=4.1.0" rel="stylesheet">
+    <link rel="shortcut icon" href="../themes/images/favicon.ico" />
+    <link href="../themes/css/bootstrap.min.css?v=3.3.6" rel="stylesheet" />
+    <link href="../themes/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" />
+    <link href="../themes/css/animate.css" rel="stylesheet" />
+    <link href="../themes/css/style.css?v=4.1.0" rel="stylesheet" />
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow: hidden">
@@ -36,7 +36,8 @@
 
                                 <li><a class="J_menuItem" href="#">个人资料</a>
                                 </li>
-
+                               <li><a id="qualification" data-value="qualification" class="J_menuItem" href=""  onclick="qualification()">资质认证</a>
+                                </li>
                                 <li class="divider"></li>
                                 <li><a href="publicforms/Login/Login.aspx?action=exit">安全退出</a>
                                 </li>
@@ -137,7 +138,7 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="publicforms/error.aspx">订单管理</a>
+                                <a class="J_menuItem" href="user/order/manage_order.aspx"">订单管理</a>
                             </li>
                             <li>
                                 <a class="J_menuItem" href="publicforms/error.aspx">发票管理</a>
@@ -363,6 +364,7 @@
         </div>
         <!--右侧边栏结束-->
     </div>
+    <div id="response"></div>
     <!-- 全局js -->
     <script src="../js/jquery.min.js?v=2.1.4"></script>
     <script src="../js/bootstrap.min.js?v=3.3.6"></script>
@@ -372,6 +374,48 @@
     <!-- 自定义js -->
     <script src="../js/hplus.js?v=4.1.0"></script>
     <script type="text/javascript" src="../js/contabs.js"></script>
+    <script>
+       function qualification()
+       {
+           $.ajax({
+               type: 'post',
+               url: "?action=username_judge",
+               success: function (data) {
+                   if (data != "unregister")
+                   {
+                       $("#response").html(data);
+                       return;
+                   }
+                   else {
+                       var temp = $("#qualification").attr("data-value");
+                       if (temp != "qualification") {
+                           return;
+                       }
+                       layer.confirm('正在进入"测绘资质认证界面",您属于哪种用户？', {
+                           btn: ['个人', '单位'] //按钮
+                       }, function () {
+                           window.location.href = "themes/index1css/Information.aspx?action=binding";
+                           document.getElementById("qualification").href = "user/person/qualification_certify.aspx";
+                           $("#qualification").attr("data-value", "qualification_past");
+                           $("#qualification").click();
+                       }, function () {
+                           document.getElementById("qualification").href = "user/company/qualification_certify.aspx";
+                           $("#qualification").attr("data-value", "qualification_past");
+                           $("#qualification").click();
+
+                           //$("#qualification").attr("href") = "user/company/qualification_certify.aspx";
+                           // window.location.href = "user/company/qualification_certify.aspx";
+                       });
+                   }
+               
+
+               },
+               
+              // dataType: "json"
+           });
+          
+        }
+    </script>
 </body>
 
 </html>

@@ -12,6 +12,7 @@ namespace Model
     public class InvoiceInfo
     {
         public InvoiceInfo() {
+            Invoice = "";
             TaxNum = "";
             UnitAddress = "";
             Tel = "";
@@ -20,6 +21,10 @@ namespace Model
             UserName = "";
         }
         public int ID { set; get; }
+        /// <summary>
+        /// 抬头
+        /// </summary>
+        public string Invoice { set; get; }
         /// <summary>
         /// 税号
         /// </summary>

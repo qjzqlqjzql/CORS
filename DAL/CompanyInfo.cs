@@ -163,6 +163,40 @@ namespace DAL
                 return null;
             }
         }
+        public static Model.CompanyInfo GetModel()
+        {
+            string strSql = "select top 1 * from CompanyInfo order by ID desc";
+            Model.CompanyInfo model = new Model.CompanyInfo();
+            DataSet ds = DBHelperSQL.GetDataSet(strSql, connectionString);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                model.ID = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
+                model.Company = Convert.ToString(ds.Tables[0].Rows[0]["Company"]);
+                model.Address = Convert.ToString(ds.Tables[0].Rows[0]["Address"]);
+                model.BelongArea = Convert.ToString(ds.Tables[0].Rows[0]["BelongArea"]);
+                model.BusinessLicense = Convert.ToString(ds.Tables[0].Rows[0]["BusinessLicense"]);
+                model.CertificationTime = Convert.ToDateTime(ds.Tables[0].Rows[0]["CertificationTime"]);
+                model.CompanyTel = Convert.ToString(ds.Tables[0].Rows[0]["CompanyTel"]);
+                model.Contact = Convert.ToString(ds.Tables[0].Rows[0]["Contact"]);
+                model.ContactIDCardFile = Convert.ToString(ds.Tables[0].Rows[0]["ContactIDCardFile"]);
+                model.ContactIDCardNumer = Convert.ToString(ds.Tables[0].Rows[0]["ContactIDCardNumer"]);
+                model.Industry = Convert.ToString(ds.Tables[0].Rows[0]["Industry"]);
+                model.LegalIDCardFile = Convert.ToString(ds.Tables[0].Rows[0]["LegalIDCardFile"]);
+                model.LegalIDCardNumber = Convert.ToString(ds.Tables[0].Rows[0]["LegalIDCardNumber"]);
+                model.LegalPerson = Convert.ToString(ds.Tables[0].Rows[0]["LegalPerson"]);
+                model.OrganizationCode = Convert.ToString(ds.Tables[0].Rows[0]["OrganizationCode"]);
+                model.PowerOfAttorney = Convert.ToString(ds.Tables[0].Rows[0]["PowerOfAttorney"]);
+                model.SurveyingFile = Convert.ToString(ds.Tables[0].Rows[0]["SurveyingFile"]);
+                model.SurveyingNumber = Convert.ToString(ds.Tables[0].Rows[0]["SurveyingNumber"]);
+                model.SurveyingQualification = Convert.ToString(ds.Tables[0].Rows[0]["SurveyingQualification"]);
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         /// <summary>
         /// 删除一条数据（根据UserName）
         /// </summary>

@@ -39,7 +39,7 @@ namespace Model
         /// </summary>
         public string Address { set; get; }
         /// <summary>
-        /// 单位电弧
+        /// 单位电话
         /// </summary>
         public string CompanyTel { set; get; }
         /// <summary>
